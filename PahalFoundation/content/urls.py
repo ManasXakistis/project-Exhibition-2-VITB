@@ -7,6 +7,7 @@ urlpatterns = [
     # views
     path('blogs/', views.blog, name='blog'),
     path('blogpost/<str:slug>', views.blogpost, name='blogpost'),
+    path('your_blogs/', views.your_blogs, name='your_blogs'),
     # path('gallery/', views.gallery, name='gallery'),
 
     # views2
@@ -16,5 +17,9 @@ urlpatterns = [
     path('playlist/<str:slug>', views2.plvideos, name='video_in_playlist'),
 
     # views3
-    path('create_blog/',views3.create_blog,name="create_blog"),
+    path('dashboard/profile/', views3.profile, name="profile"),
+    path('dashboard/attendance/', views3.attendance, name="attendance"),
+    path('dashboard/admission/',views3.admission,name="admission"),
+    path('dashboard/create_blog/',views3.create_blog,name="create_blog"),
+
 ]

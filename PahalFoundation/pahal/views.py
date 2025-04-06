@@ -1,12 +1,16 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User, Group
 
 # Create your views here.
 
 def index(request):
     return render(request, 'pahal/index.html')
+
+def error_page(request):
+    return render(request, 'pahal/error.html')
 
 def register(request):
     if request.method == "POST":
@@ -26,6 +30,9 @@ def register(request):
         )
         user.set_password(password)
         user.save()
+
+        group = Group.objects.get(name='default')
+        user.groups.add(group)
 
         return redirect('/login/')
 
@@ -51,3 +58,8 @@ def login_page(request):
 def logout_page(request):
     logout(request)
     return redirect('/')
+
+@login_required(login_url="/login")
+def change_password(request):
+
+    return render(request, "pahal/change_password.html")

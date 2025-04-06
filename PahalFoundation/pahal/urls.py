@@ -9,6 +9,8 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('login/', views.login_page, name='login'),
     path('logout/', views.logout_page, name='logout'),
+    path('change_password/', views.change_password, name='change_password'),
+    path('error404/', views.error_page, name='error404'),
 
     # views2
     path('about/', views2.about, name='about'),
@@ -18,5 +20,5 @@ urlpatterns = [
     path('donate/', views2.donate, name='donate'),
 
     # views3
-    path('dashboard/',views3.dashboard,name="dashboard"),
+
 ]
